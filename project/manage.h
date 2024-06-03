@@ -27,10 +27,13 @@ void updateCourse(Course* course, const string& newCourseName, const string& new
 // hàm xóa sinh viên ra khỏi khoa học 
 void removeStudentFromCourse(Course* course, const string& studentID);
 
-// hàm xóa khóa học ra khỏi học kỳ
+// hàm xóa khoa học ra khỏi học kỳ
 void deleteCourse(Semester* semester, const string& courseID);
 
 // hàm xuất các lớp học trong năm học
 void viewClasses(SchoolYear* schoolYear);
+
+// hàm xuat hoc sinh trong lop hoc
+void viewStudentsInClass(Class* cls);
 
 #endif

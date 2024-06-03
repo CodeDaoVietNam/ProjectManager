@@ -1,6 +1,5 @@
-#include "log.h"
-#include "menu.h"
+#include"struct.h"
 int main()
 {
-    
+    return 0;
 }

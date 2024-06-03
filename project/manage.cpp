@@ -159,6 +159,18 @@ void viewClasses(SchoolYear* schoolYear){
         tem=tem->next;
     }
 }
+
 void viewStudentsInClass(Class* cls)
 {
+    Student* student = cls->StudentList;
+    if(student== NULL)
+    {
+        cout<<"There aren't any student in this class \n";
+        return;
+    }
+    while(student != NULL)
+    {
+        PrintStudent(student,printStudent01);
+        student = student ->next;
+    }
 }

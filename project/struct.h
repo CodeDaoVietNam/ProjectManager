@@ -33,27 +33,6 @@ struct Student
     float otherMark = 0;
     Student* next ;
 };
-struct Class {
-   string className;
-   Student *StudentList;
-   Class *next;
-};
-struct SchoolYear
-{
-   string year;
-   Class * classList;
-   Semester *semesterList;
-   SchoolYear *next;
-};
-struct Semester
-{
-    int semesterNumber;
-    string schoolYear;
-    string startDate;
-    string endDate;
-    Course* courseList;
-    Semester *next;
-};
 struct Course
 {
     string courseID;
@@ -66,5 +45,26 @@ struct Course
     string session;
     Student* studentList;
     Course *next ;
+};
+struct Class {
+   string className;
+   Student *StudentList;
+   Class *next;
+};
+struct Semester
+{
+    int semesterNumber;
+    string schoolYear;
+    string startDate;
+    string endDate;
+    Course* courseList;
+    Semester *next;
+};
+struct SchoolYear
+{
+   string year;
+   Semester* semesterList;
+   Class * classList;
+   SchoolYear *next;
 };
 #endif

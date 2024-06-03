@@ -58,11 +58,15 @@ void deleteStudentList(Student* pHead){
     }
     pHead = nullptr;
 }
-/*void printStudent01(Student* student){
+void PrintStudent (Student *student,Print function)
+{
+    function(student);
+}
+void printStudent01(Student* student){
     cout << "StudentID: " << student->StudentID << endl;
     cout << "Name: " << student->LastName << " " << student->FirstName << endl;
     cout << "Class: " << student->className;
     cout << "Gender: " << student->Gender << endl;
     cout << "Date of birth: " << student->dob << endl;
     cout << "SocialID: " << student->SocialID << endl;
-}*/
+}
