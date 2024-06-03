@@ -33,6 +33,12 @@ void deleteCourse(Semester* semester, const string& courseID);
 // hàm xuất các lớp học trong năm học
 void viewClassesInYear(SchoolYear* schoolYear);
 
+//hàm xuất course ra màn hình 
+void printCourse(Course* course);
+
+// hàm xuất course trong học kỳ
+void viewCoursesInSemester(Semester* semester);
+
 // hàm xuat hoc sinh trong lop hoc
 void viewStudentsInClass(Class* cls);
 
