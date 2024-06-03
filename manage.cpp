@@ -148,22 +148,23 @@ void deleteCourse(Semester* semester, const string& courseID)
         cout << "Cannot find this course.\n";
     }
 }
-void viewClasses(SchoolYear* schoolYear){
+void viewClassesInYear(SchoolYear* schoolYear)
+{
     if(!schoolYear->classList) return;
     Class* tem = schoolYear->classList;
-    int count = 0;
+    int count = 1;
     cout << "No  |" << " Class Name " << endl;
     while(tem) {
         cout << setw(6) << count << tem->className << endl;
         count++;
-        tem=tem->next;
+        tem = tem->next;
     }
 }
 
 void viewStudentsInClass(Class* cls)
 {
     Student* student = cls->StudentList;
-    if(student== NULL)
+    if(student == NULL)
     {
         cout<<"There aren't any student in this class \n";
         return;
@@ -172,5 +173,31 @@ void viewStudentsInClass(Class* cls)
     {
         PrintStudent(student,printStudent01);
         student = student ->next;
+    }
+}
+
+void printCourse(Course* course){
+    if(!course) return;
+    cout << course->courseID << string(11 - course->courseID.size(), ' ');
+    cout << course->courseName << string(31 - course->courseName.size(), ' ');
+    cout << course->className << string(12 - course->className.size(), ' ');
+    cout << course->teacherName << string(31 - course->teacherName.size(), ' ');
+    cout << course->dayOfWeek << string(15 - course->dayOfWeek.size(), ' ');
+}
+
+void viewCoursesInSemester(Semester* semester)
+{
+    if(!semester->courseList) return;
+    Course* tem = semester->courseList;
+    int count = 1;
+    cout << "                          " << "ALL COURSE IN SEMESTER " << semester->semesterNumber << " IN " << semester->schoolYear << endl;
+    cout << "|No   |CourseID  |Course Name                   |Class name |Teacher Name                  |Day of weak     |" << endl;
+    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+    while(tem){
+        cout << " " << setw(5) << count;
+        printCourse(tem);
+        cout << endl;
+        tem = tem->next;
+        count++;
     }
 }

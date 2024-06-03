@@ -31,7 +31,7 @@ void removeStudentFromCourse(Course* course, const string& studentID);
 void deleteCourse(Semester* semester, const string& courseID);
 
 // hàm xuất các lớp học trong năm học
-void viewClasses(SchoolYear* schoolYear);
+void viewClassesInYear(SchoolYear* schoolYear);
 
 // hàm xuat hoc sinh trong lop hoc
 void viewStudentsInClass(Class* cls);

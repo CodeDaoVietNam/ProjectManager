@@ -61,6 +61,7 @@ void deleteStudentList(Student* pHead){
 void PrintStudent (Student *student,Print function)
 {
     function(student);
+    cout << endl;
 }
 void printStudent01(Student* student){
     cout << "StudentID: " << student->StudentID << endl;
