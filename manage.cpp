@@ -254,3 +254,47 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
     }
     
 }
+void ImportScoreBoard (Course *course , const string & filePath)
+{
+    ifstream file(filePath);
+    if(!file.is_open() == false)
+    {
+        cout<<"Failed to open file to read data .\n";
+        return ;
+    }
+    string tmp ;
+    while(getline(file,tmp))
+    {
+        stringstream ss (tmp);
+        string studentId , FullName;
+        string no ;
+        double TotalMark , FinalMark , MidtermMark , OtherMark;
+        string tmp;
+        getline(ss,no,',');
+        int NO = stoi (no);
+        getline(ss,studentId,',');
+        getline(ss,FullName,',');
+        getline(ss,tmp,',');
+        TotalMark = stof(tmp);
+        getline(ss,tmp,',');
+        FinalMark = stof (tmp);
+        getline(ss,tmp,',');
+        MidtermMark = stof(tmp);
+        getline(ss,tmp,',');
+        OtherMark = stof(tmp);
+        Student * student = course->studentList;
+        while(student != nullptr)
+        {
+            if(student->StudentID == studentId)
+            {
+                student->totalMark = TotalMark;
+                student->finalMark = FinalMark;
+                student->midtermMark = MidtermMark;
+                student->otherMark = OtherMark;
+                break;
+            }
+            student = student->next;
+        }
+    }
+    file.close();
+}
