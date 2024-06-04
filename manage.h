@@ -42,4 +42,7 @@ void viewCoursesInSemester(Semester* semester);
 // hàm xuat hoc sinh trong lop hoc
 void viewStudentsInClass(Class* cls);
 
+//hàm update student result
+void updateStudentResult ();
+
 #endif

@@ -31,6 +31,7 @@ struct Student
     float finalMark = 0;
     float midtermMark = 0;
     float otherMark = 0;
+    float gpa =0;
     Student* next ;
 };
 struct Course
