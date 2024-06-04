@@ -42,11 +42,9 @@ void viewCoursesInSemester(Semester* semester);
 // hàm xuất danh sách học sinh trong lớp học
 void viewStudentsInClass(Class* cls);
 
-<<<<<<< HEAD
 //hàm update student result
 void updateStudentResult ();
 
-=======
 // hàm xuất danh sách học sinh trong khóa học
 void viewStudentsInCourse(Course* course);
 
@@ -63,5 +61,4 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename);
 
 // hàm đọc file
 void ImportScoreBoard (Course *course , const string & filePath);
->>>>>>> f50176910ca208da4b3f3b64861671a60fc457cd
 #endif

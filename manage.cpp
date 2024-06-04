@@ -216,11 +216,11 @@ int printCourse02(Course* course){
     cout << course->courseID << ", ";
  }
 
-void viewCoursesInSemester(Semester* semester, PrintCourse printnumber)
+void viewCoursesInSemester(Semester* semester, PrintCourse printNumber)
 {
     if(!semester->courseList) return;
     Course* tem = semester->courseList;
-    if(printnumber(tem) == 1){
+    if(printNumber(tem) == 1){
         int count = 1;
         cout << "                          " << "ALL COURSE IN SEMESTER " << semester->semesterNumber << " IN " << semester->schoolYear << endl;
         cout << "|No   |CourseID  |Course Name                   |Class name |Teacher Name                  |Day of weak     |" << endl;
@@ -253,7 +253,7 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
         return;
     }
     Student* tem = course->studentList;
-    fout << "No,StudentID,FirstName,LastName,totalMark,finalMark,midterMark\n";
+    fout << "No,StudentID,FirstName,LastName,totalMark,finalMark,midtermMark\n";
     while(tem){
         fout << tem->No << ",";
         fout << tem->StudentID << ",";
