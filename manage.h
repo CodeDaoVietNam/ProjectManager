@@ -55,6 +55,9 @@ int printCourse03(Course* course);
 
 // hàm xuát danh sách khóa học trong một học kỳ
 void viewCoursesInSemester(Semester* semester, PrintCourse printnumber);
+
+// hàm xuất kếu quả khóa học của một sinh viên
+ void viewStudentCourseResult(const string& studentID, Course* course);
  
 //hàm xuất file học sinh trong môn học có các điểm số
 void exportStudentListInCourseToCSV(Course* course, const string& filename);
