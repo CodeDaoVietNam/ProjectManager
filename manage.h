@@ -47,14 +47,14 @@ void updateStudentResult ();
 
 // hàm xuất danh sách học sinh trong khóa học
 void viewStudentsInCourse(Course* course);
-
+typedef void  (*PrintCourse)  (Course *);
 // hàm xuất khóa học kiểu bảng, từng thông tin, chỉ xuất ID khóa học
 int printCourse01(Course* course);
 int printCourse02(Course* course);
 int printCourse03(Course* course);
 
 // hàm xuát danh sách khóa học trong một học kỳ
-void viewCoursesInSemester(Semester* semester, PrintCourse printnumber);
+void viewCoursesInSemester(Semester* semester, PrintCourse printNumber);
  
 //hàm xuất file học sinh trong môn học có các điểm số
 void exportStudentListInCourseToCSV(Course* course, const string& filename);
