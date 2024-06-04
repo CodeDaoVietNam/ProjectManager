@@ -52,4 +52,10 @@ int printCourse03(Course* course);
 
 // hàm xuát danh sách khóa học trong một học kỳ
 void viewCoursesInSemester(Semester* semester, PrintCourse printnumber);
+ 
+//hàm xuất file học sinh trong môn học có các điểm số
+void exportStudentListInCourseToCSV(Course* course, const string& filename);
+
+// hàm đọc file
+void ImportScoreBoard (Course *course , const string & filePath);
 #endif

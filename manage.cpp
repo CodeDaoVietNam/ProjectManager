@@ -252,8 +252,21 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
         cout << "Failed to open file.\n";
         return;
     }
-    
+    Student* tem = course->studentList;
+    fout << "No,StudentID,FirstName,LastName,totalMark,finalMark,midterMark\n";
+    while(tem){
+        fout << tem->No << ",";
+        fout << tem->StudentID << ",";
+        fout << tem->FirstName << ",";
+        fout << tem->LastName << ",";
+        fout << tem->totalMark << ",";
+        fout << tem->finalMark << ",";
+        fout << tem->midtermMark << ",";
+        fout << endl;
+        tem = tem->next;
+    }  
 }
+
 void ImportScoreBoard (Course *course , const string & filePath)
 {
     ifstream file(filePath);
