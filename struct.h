@@ -27,11 +27,11 @@ struct Student
     string dob;
     string SocialID;
     string className;
-    float totalMark = 0;
-    float finalMark = 0;
-    float midtermMark = 0;
-    float otherMark = 0;
-    float gpa =0;
+    float totalMark = NULL;
+    float finalMark = NULL;
+    float midtermMark = NULL;
+    float otherMark = NULL;
+    float gpa = NULL;
     Student* next ;
 };
 struct Course

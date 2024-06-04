@@ -253,16 +253,12 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
         return;
     }
     Student* tem = course->studentList;
-    fout << "No,StudentID,FirstName,LastName,totalMark,finalMark,midtermMark\n";
+    fout << "No,StudentID,FirstName,LastName,totalMark,finalMark,midtermMark,otherMark\n";
     while(tem){
+        string fullname = tem->LastName + " " + tem->FirstName;
         fout << tem->No << ",";
         fout << tem->StudentID << ",";
-        fout << tem->FirstName << ",";
-        fout << tem->LastName << ",";
-        fout << tem->totalMark << ",";
-        fout << tem->finalMark << ",";
-        fout << tem->midtermMark << ",";
-        fout << endl;
+        fout << fullname << ",,,," << endl;
         tem = tem->next;
     }  
 }
@@ -276,7 +272,9 @@ void ImportScoreBoard (Course *course , const string & filePath)
         return ;
     }
     string tmp ;
-    while(getline(file,tmp))
+    Student * student = course->studentList;
+    file.ignore(255, '/n');
+    while(getline(file,tmp) && student)
     {
         stringstream ss (tmp);
         string studentId , FullName;
@@ -295,10 +293,8 @@ void ImportScoreBoard (Course *course , const string & filePath)
         MidtermMark = stof(tmp);
         getline(ss,tmp,',');
         OtherMark = stof(tmp);
-        Student * student = course->studentList;
-        while(student != nullptr)
-        {
-            if(student->StudentID == studentId)
+        
+        if(student->StudentID == studentId && FullName == student->LastName + " " + student->FirstName)
             {
                 student->totalMark = TotalMark;
                 student->finalMark = FinalMark;
@@ -306,8 +302,24 @@ void ImportScoreBoard (Course *course , const string & filePath)
                 student->otherMark = OtherMark;
                 break;
             }
-            student = student->next;
-        }
-    }
+        student = student->next;
+    } 
     file.close();
 }
+ void viewStudentCourseResult(const string& studentID, Course* course)
+ {
+    if(!course->studentList) return;
+    Student* tem = course->studentList;
+    while(tem){
+        if(tem->StudentID == studentID){
+            cout << "-------- " << course->courseName << " course result " << " --------" << endl;
+            cout << "Midterm Mark: " << tem->midtermMark << endl;
+            cout << "Final Mark: " << tem->finalMark << endl;
+            cout << "Other Mark: " << tem->otherMark << endl;
+            cout << "TOTAL MARK: " << tem->totalMark << endl;
+            break;
+        }
+        tem = tem->next;
+    }
+    if(!tem) cout << "This student was not found in this course.\n";
+ }
