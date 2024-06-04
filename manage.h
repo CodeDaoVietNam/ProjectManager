@@ -27,10 +27,10 @@ void updateCourse(Course* course, const string& newCourseName, const string& new
 // hàm xóa sinh viên ra khỏi khoa học 
 void removeStudentFromCourse(Course* course, const string& studentID);
 
-// hàm xóa khoa học ra khỏi học kỳ
+// hàm xóa khóa học ra khỏi học kỳ
 void deleteCourse(Semester* semester, const string& courseID);
 
-// hàm xuất các lớp học trong năm học
+// hàm xuất danh sách lớp học trong năm học
 void viewClassesInYear(SchoolYear* schoolYear);
 
 //hàm xuất course ra màn hình 
@@ -39,10 +39,29 @@ void printCourse(Course* course);
 // hàm xuất course trong học kỳ
 void viewCoursesInSemester(Semester* semester);
 
-// hàm xuat hoc sinh trong lop hoc
+// hàm xuất danh sách học sinh trong lớp học
 void viewStudentsInClass(Class* cls);
 
+<<<<<<< HEAD
 //hàm update student result
 void updateStudentResult ();
 
+=======
+// hàm xuất danh sách học sinh trong khóa học
+void viewStudentsInCourse(Course* course);
+
+// hàm xuất khóa học kiểu bảng, từng thông tin, chỉ xuất ID khóa học
+int printCourse01(Course* course);
+int printCourse02(Course* course);
+int printCourse03(Course* course);
+
+// hàm xuát danh sách khóa học trong một học kỳ
+void viewCoursesInSemester(Semester* semester, PrintCourse printnumber);
+ 
+//hàm xuất file học sinh trong môn học có các điểm số
+void exportStudentListInCourseToCSV(Course* course, const string& filename);
+
+// hàm đọc file
+void ImportScoreBoard (Course *course , const string & filePath);
+>>>>>>> f50176910ca208da4b3f3b64861671a60fc457cd
 #endif

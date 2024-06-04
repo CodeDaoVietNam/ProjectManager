@@ -176,31 +176,97 @@ void viewStudentsInClass(Class* cls)
     }
 }
 
-void printCourse(Course* course){
+void viewStudentsInCourse(Course* course)
+{
+    Student* student = course->studentList;
+    if(student == NULL)
+    {
+        cout<<"There aren't any student in this class \n";
+        return;
+    }
+    while(student != NULL)
+    {
+        PrintStudent(student,printStudent01);
+        student = student ->next;
+    }
+}
+typedef int(*PrintCourse)(Course* course);
+
+int printCourse01(Course* course){
     if(!course) return;
     cout << course->courseID << string(11 - course->courseID.size(), ' ');
     cout << course->courseName << string(31 - course->courseName.size(), ' ');
     cout << course->className << string(12 - course->className.size(), ' ');
     cout << course->teacherName << string(31 - course->teacherName.size(), ' ');
     cout << course->dayOfWeek << string(15 - course->dayOfWeek.size(), ' ');
+    return 1;
 }
 
-void viewCoursesInSemester(Semester* semester)
+int printCourse02(Course* course){
+    if(!course) return;
+    cout << "CourseID: " << course->courseID << endl;
+    cout << "Course name: " << course->courseName << endl;
+    cout << "Class: " << course->className << endl;;
+    cout << "Teacher Name: " << course->teacherName << endl;;
+    cout << "Day of weak: " << course->dayOfWeek << endl;
+    return 2;
+}
+ int printCourse03(Course* course){
+    if(!course) return;
+    cout << course->courseID << ", ";
+ }
+
+void viewCoursesInSemester(Semester* semester, PrintCourse printnumber)
 {
     if(!semester->courseList) return;
     Course* tem = semester->courseList;
-    int count = 1;
-    cout << "                          " << "ALL COURSE IN SEMESTER " << semester->semesterNumber << " IN " << semester->schoolYear << endl;
-    cout << "|No   |CourseID  |Course Name                   |Class name |Teacher Name                  |Day of weak     |" << endl;
-    cout << "------------------------------------------------------------------------------------------------------------" << endl;
-    while(tem){
-        cout << " " << setw(5) << count;
-        printCourse(tem);
-        cout << endl;
-        tem = tem->next;
-        count++;
+    if(printnumber(tem) == 1){
+        int count = 1;
+        cout << "                          " << "ALL COURSE IN SEMESTER " << semester->semesterNumber << " IN " << semester->schoolYear << endl;
+        cout << "|No   |CourseID  |Course Name                   |Class name |Teacher Name                  |Day of weak     |" << endl;
+        cout << "------------------------------------------------------------------------------------------------------------" << endl;
+        while(tem){
+            cout << " " << setw(5) << count;
+            printCourse01(tem);
+            cout << endl;
+            tem = tem->next;
+            count++;
+        }
     }
+    else {
+        cout << "                          " << "ALL COURSE IN SEMESTER " << semester->semesterNumber << " IN " << semester->schoolYear << endl;
+        while(tem){
+            printCourse01(tem);
+            cout << endl;
+            tem = tem->next;
+        }
+    }
+    
 }
+
+void exportStudentListInCourseToCSV(Course* course, const string& filename){
+    if(!course) return;
+    ofstream fout;
+    fout.open(filename);
+    if(!fout.is_open()){
+        cout << "Failed to open file.\n";
+        return;
+    }
+    Student* tem = course->studentList;
+    fout << "No,StudentID,FirstName,LastName,totalMark,finalMark,midterMark\n";
+    while(tem){
+        fout << tem->No << ",";
+        fout << tem->StudentID << ",";
+        fout << tem->FirstName << ",";
+        fout << tem->LastName << ",";
+        fout << tem->totalMark << ",";
+        fout << tem->finalMark << ",";
+        fout << tem->midtermMark << ",";
+        fout << endl;
+        tem = tem->next;
+    }  
+}
+
 void ImportScoreBoard (Course *course , const string & filePath)
 {
     ifstream file(filePath);
