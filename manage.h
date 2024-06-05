@@ -39,8 +39,9 @@ void printCourse(Course* course);
 // hàm xuất course trong học kỳ
 void viewCoursesInSemester(Semester* semester);
 
+typedef int(*PrintOneStudent)(Student* student);
 // hàm xuất danh sách học sinh trong lớp học
-void viewStudentsInClass(Class* cls);
+void viewStudentsInClass(Class* cls, PrintOneStudent print, int typePrint);
 
 //hàm update student result
 void updateStudentResult ();
@@ -54,7 +55,7 @@ int printCourse02(Course* course);
 int printCourse03(Course* course);
 
 // hàm xuát danh sách khóa học trong một học kỳ
-void viewCoursesInSemester(Semester* semester, PrintCourse printNumber);
+void viewCoursesInSemester(Semester* semester, PrintCourse printNumber, int typePrint);
  
 //hàm xuất file học sinh trong môn học có các điểm số
 void exportStudentListInCourseToCSV(Course* course, const string& filename);

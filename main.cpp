@@ -9,7 +9,9 @@ int main()
     addSemesterToSchoolYear(schoolYear, semester);
     Class* CTT5 = CreateClass("23CTT5");
     importStudentsFromCSV(CTT5, "CTT5.csv");
-    viewStudentsInClass(CTT5);
+    viewStudentsInClass(CTT5, printStudent02, 2);
+    //print result each student in class
+    viewStudentsInClass(CTT5, printStudent01, 1);
     addClassToSchoolYear(schoolYear, CTT5);
     createSemester(1, "2023-2024", "07.07/2023", "07/07/2024");
     Course* course = createCourse("23120368","VTP","23CTT5","Pham Le Thanh Tu",3,50,"Mon","S1");
@@ -19,6 +21,5 @@ int main()
     ImportScoreBoard(course, "ScoreBoard.csv");
     viewStudentCourseResult("23120366", course);
     viewScoreBoard(course);
-
     return 0;
 }
