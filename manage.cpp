@@ -35,6 +35,10 @@ SchoolYear* createSchoolYear(string year) {
 }
 
 void addCourseToSemester(Semester* semester, Course* course) {
+    if (semester == NULL)
+    {
+        return;
+    }
     if(semester->courseList == NULL)
     {
         semester->courseList = course;
@@ -77,7 +81,7 @@ void addClassToSchoolYear(SchoolYear* schoolYear, Class* cls) {
 
 void addStudentToCourse(Course* course, Student* student)
 {
-    if(course->studentList != NULL)
+    if(course->studentList == NULL)
     {
         course->studentList = student;
         return;
@@ -181,7 +185,7 @@ void viewStudentsInCourse(Course* course)
     Student* student = course->studentList;
     if(student == NULL)
     {
-        cout<<"There aren't any student in this class \n";
+        cout<<"There aren't any student in this course \n";
         return;
     }
     while(student != NULL)
@@ -190,10 +194,9 @@ void viewStudentsInCourse(Course* course)
         student = student ->next;
     }
 }
-typedef int(*PrintCourse)(Course* course);
 
 int printCourse01(Course* course){
-    if(!course) return;
+    if(!course) return 0;
     cout << course->courseID << string(11 - course->courseID.size(), ' ');
     cout << course->courseName << string(31 - course->courseName.size(), ' ');
     cout << course->className << string(12 - course->className.size(), ' ');
@@ -203,7 +206,7 @@ int printCourse01(Course* course){
 }
 
 int printCourse02(Course* course){
-    if(!course) return;
+    if(!course) return 0;
     cout << "CourseID: " << course->courseID << endl;
     cout << "Course name: " << course->courseName << endl;
     cout << "Class: " << course->className << endl;;
@@ -212,8 +215,9 @@ int printCourse02(Course* course){
     return 2;
 }
  int printCourse03(Course* course){
-    if(!course) return;
+    if(!course) return 0;
     cout << course->courseID << ", ";
+    return 3;
  }
 
 void viewCoursesInSemester(Semester* semester, PrintCourse printNumber)
@@ -253,7 +257,7 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
         return;
     }
     Student* tem = course->studentList;
-    file << "No,StudentID,FirstName,LastName,totalMark,finalMark,midtermMark,otherMark\n";
+    file << "No,StudentID,FullName,totalMark,finalMark,midtermMark,otherMark\n";
     while(tem){
         string fullname = tem->LastName + " " + tem->FirstName;
         file << tem->No << ",";
@@ -261,19 +265,21 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
         file << fullname << ",,,," << endl;
         tem = tem->next;
     }  
+    file.close();
+    cout << "Export sucessful.\n";
 }
 
 void ImportScoreBoard (Course *course , const string & filePath)
 {
     ifstream file(filePath);
-    if(!file.is_open() == false)
+    if(file.is_open() == false)
     {
         cout<<"Failed to open file to read data .\n";
         return ;
     }
     string tmp ;
     Student * student = course->studentList;
-    file.ignore(255, '/n');
+    getline(file, tmp);
     while(getline(file,tmp) && student)
     {
         stringstream ss (tmp);
@@ -286,15 +292,15 @@ void ImportScoreBoard (Course *course , const string & filePath)
         getline(ss,studentId,',');
         getline(ss,FullName,',');
         getline(ss,tmp,',');
-        TotalMark = stof(tmp);
+        TotalMark = stod(tmp);
         getline(ss,tmp,',');
-        FinalMark = stof (tmp);
+        FinalMark = stod (tmp);
         getline(ss,tmp,',');
-        MidtermMark = stof(tmp);
+        MidtermMark = stod(tmp);
         getline(ss,tmp,',');
-        OtherMark = stof(tmp);
+        OtherMark = stod(tmp);
         
-        if(student->StudentID == studentId && FullName == student->LastName + " " + student->FirstName)
+        if(student->StudentID == studentId /*&& FullName == student->LastName + " " + student->FirstName*/)
             {
                 student->totalMark = TotalMark;
                 student->finalMark = FinalMark;
