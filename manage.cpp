@@ -283,7 +283,6 @@ void ImportScoreBoard (Course *course , const string & filePath)
     while(!file.eof() && student)
     {
         getline(file, tmp);
-        cout << tmp;
         stringstream ss (tmp);
         string studentId , FullName;
         string no ;
@@ -332,7 +331,7 @@ void ImportScoreBoard (Course *course , const string & filePath)
  }
  void printStudentScore(Student* student) {
      cout << student->StudentID << string(10 - student->StudentID.size(), ' ') << "|";
-     string fullname = student->LastName + " " + student->LastName;
+     string fullname = student->LastName + " " + student->FirstName;
      cout << fullname << string(30 - fullname.size(), ' ') << "|";
      cout << setw(6) << student->midtermMark << "      |";
      cout << setw(6) << student->finalMark << "      |";
