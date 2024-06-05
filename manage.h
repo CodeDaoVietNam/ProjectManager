@@ -43,7 +43,7 @@ void viewCoursesInSemester(Semester* semester);
 void viewStudentsInClass(Class* cls);
 
 //hàm update student result
-void updateStudentResult ();
+void updateStudentResult (Course *course, const string & studentID ,double totalMark , double finalMark, double midtermMark ,double otherMark);
 
 // hàm xuất danh sách học sinh trong khóa học
 void viewStudentsInCourse(Course* course);

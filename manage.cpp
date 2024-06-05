@@ -247,7 +247,27 @@ void viewCoursesInSemester(Semester* semester, PrintCourse printNumber)
     }
     
 }
-
+void updateStudentResult (Course *course, const string & studentID ,double totalMark , double finalMark, double midtermMark ,double otherMark)
+{
+    Student *student =course->studentList ;
+    if(student == NULL)
+    {
+        cout<<"There aren't any student in this course to update their result.\n";
+        return;
+    }
+    while(student != NULL)
+    {
+        if(student->StudentID == studentID)
+        {
+            student ->totalMark = totalMark;
+            student->finalMark = finalMark;
+            student->midtermMark = midtermMark;
+            student->otherMark = otherMark;
+            return;
+        }
+        student = student->next;
+    }
+}
 void exportStudentListInCourseToCSV(Course* course, const string& filename){
     if(!course) return;
     ofstream file;
