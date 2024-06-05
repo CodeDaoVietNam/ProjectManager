@@ -13,6 +13,7 @@ Student* createStudent(int no,string studentID,string firstName,string lastName,
 {
     Student* newStudent = new Student ;
     newStudent->No = no;
+    newStudent->StudentID = studentID;
     newStudent->FirstName = firstName;
     newStudent->LastName = lastName;
     newStudent->Gender = gender;
@@ -67,14 +68,15 @@ void PrintStudent (Student *student,Print function)
 void printStudent01(Student* student){
     cout << "StudentID: " << student->StudentID << endl;
     cout << "Name: " << student->LastName << " " << student->FirstName << endl;
-    cout << "Class: " << student->className;
+    cout << "Class: " << student->className << endl;
     cout << "Gender: " << student->Gender << endl;
     cout << "Date of birth: " << student->dob << endl;
     cout << "SocialID: " << student->SocialID << endl;
 }
 void importCourseStudentsFromCSV(Course* course, const string& filePath)
 {
-      ifstream file(filePath);
+    ifstream file;
+    file.open(filePath);
     if(file.is_open()==false)
     {
         cout<<"Failed to open file.\n";
@@ -82,7 +84,7 @@ void importCourseStudentsFromCSV(Course* course, const string& filePath)
     }
     string tmp ;
     getline(file,tmp);
-    while(getline(file,tmp))
+    while(getline(file,tmp,'\n'))
     {
         stringstream ss (tmp);
         string no ,studentID ,firstName ,lastName,gender ,dob,socialID;

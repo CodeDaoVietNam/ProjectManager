@@ -47,7 +47,7 @@ void updateStudentResult ();
 
 // hàm xuất danh sách học sinh trong khóa học
 void viewStudentsInCourse(Course* course);
-typedef void  (*PrintCourse)  (Course *);
+typedef int(*PrintCourse)(Course* course);
 // hàm xuất khóa học kiểu bảng, từng thông tin, chỉ xuất ID khóa học
 int printCourse01(Course* course);
 int printCourse02(Course* course);
@@ -61,4 +61,14 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename);
 
 // hàm đọc file
 void ImportScoreBoard (Course *course , const string & filePath);
+
+// hàm in kết quả khóa học của một sinh viên
+void viewStudentCourseResult(const string& studentID, Course* course);
+
+// hàm in điểm của sinh viên
+void printStudentScore(Student* student);
+
+// hàm in bảng điểm của tất cả học sinh trong lớp học
+void viewScoreBoard(Course* course);
+
 #endif

@@ -17,7 +17,8 @@ int main()
     importCourseStudentsFromCSV(course,"VTP.csv");
     viewStudentsInCourse(course);
     ImportScoreBoard(course, "ScoreBoard.csv");
-    viewStudentCourseResult("23120368", course);
-    viewStudentCourseResult("23210365", course);
+    viewStudentCourseResult("23120366", course);
+    viewScoreBoard(course);
+
     return 0;
 }
