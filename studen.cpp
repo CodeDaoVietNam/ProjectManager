@@ -60,18 +60,27 @@ void deleteStudentList(Student* pHead){
     }
     pHead = nullptr;
 }
-void PrintStudent (Student *student,Print function)
-{
-    function(student);
-    cout << endl;
-}
-void printStudent01(Student* student){
+typedef int(*PrintOneStudent)(Student* student);
+int printStudent02(Student* student){
     cout << "StudentID: " << student->StudentID << endl;
     cout << "Name: " << student->LastName << " " << student->FirstName << endl;
     cout << "Class: " << student->className << endl;
     cout << "Gender: " << student->Gender << endl;
     cout << "Date of birth: " << student->dob << endl;
-    cout << "SocialID: " << student->SocialID << endl;
+    cout << "SocialID: " << student->SocialID << endl << endl;
+    return 2;
+}
+int printStudent01(Student* student) {
+    cout << "|" << setw(4) << student->No << " |";
+    cout << student->StudentID << string(10 - student->StudentID.size(), ' ') << "|";
+    string fullname = student->LastName + " " + student->FirstName;
+    cout << fullname << string(30 - fullname.size(), ' ') << "|";
+    cout << student->Gender << string(8 - student->Gender.size(), ' ') << "|";
+    cout << student->dob << string(13 - student->dob.size(), ' ') << "|";
+    cout << student->SocialID << string(15 - student->SocialID.size(), ' ') << "|";
+    cout << setw(6) << student->credits << " |";
+    cout << setw(4) << student->gpa << "  |\n";
+    return 1;
 }
 void importCourseStudentsFromCSV(Course* course, const string& filePath)
 {

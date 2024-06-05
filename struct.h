@@ -31,7 +31,8 @@ struct Student
     double finalMark = -1;
     double midtermMark = -1;
     double otherMark = -1;
-    double  gpa = -1;
+    double  gpa = 0;
+    int credits = 0;
     Student* next ;
 };
 struct Course
