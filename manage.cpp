@@ -266,7 +266,7 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
         tem = tem->next;
     }  
     file.close();
-    cout << "Export sucessful.\n";
+    cout << "Export Successful.\n";
 }
 
 void ImportScoreBoard (Course *course , const string & filePath)
@@ -299,14 +299,12 @@ void ImportScoreBoard (Course *course , const string & filePath)
         MidtermMark = stod(tmp);
         getline(ss,tmp,',');
         OtherMark = stod(tmp);
-        
         if(student->StudentID == studentId /*&& FullName == student->LastName + " " + student->FirstName*/)
             {
                 student->totalMark = TotalMark;
                 student->finalMark = FinalMark;
                 student->midtermMark = MidtermMark;
                 student->otherMark = OtherMark;
-                break;
             }
         student = student->next;
     } 

@@ -18,6 +18,5 @@ int main()
     viewStudentsInCourse(course);
     ImportScoreBoard(course, "ScoreBoard.csv");
     viewStudentCourseResult("23120368", course);
-
     return 0;
 }
