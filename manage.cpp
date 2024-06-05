@@ -274,7 +274,7 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
         tem = tem->next;
     }  
     file.close();
-    cout << "Export sucessful.\n";
+    cout << "Export Successful.\n";
 }
 
 void ImportScoreBoard (Course *course , const string & filePath)
