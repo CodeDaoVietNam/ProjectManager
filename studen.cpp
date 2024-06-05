@@ -31,6 +31,7 @@ void importStudentsFromCSV(Class* cls, const string& filePath)
         return ;
     }
     string tmp ;
+    getline(file,tmp);
     while(getline(file,tmp))
     {
         stringstream ss (tmp);
@@ -70,4 +71,30 @@ void printStudent01(Student* student){
     cout << "Gender: " << student->Gender << endl;
     cout << "Date of birth: " << student->dob << endl;
     cout << "SocialID: " << student->SocialID << endl;
+}
+void importCourseStudentsFromCSV(Course* course, const string& filePath)
+{
+      ifstream file(filePath);
+    if(file.is_open()==false)
+    {
+        cout<<"Failed to open file.\n";
+        return ;
+    }
+    string tmp ;
+    getline(file,tmp);
+    while(getline(file,tmp))
+    {
+        stringstream ss (tmp);
+        string no ,studentID ,firstName ,lastName,gender ,dob,socialID;
+        getline(ss,no,',');
+        getline(ss,studentID,',');
+        getline(ss,firstName,',');
+        getline(ss,lastName,',');
+        getline(ss,gender,',');
+        getline(ss,dob,',');
+        getline(ss,socialID,',');
+        int No = stoi(no);
+        Student* student = createStudent(No,studentID,firstName,lastName,gender,dob,socialID,course->className);
+        addStudentToCourse(course, student);
+    }
 }

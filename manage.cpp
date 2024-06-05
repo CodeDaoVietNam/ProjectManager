@@ -246,19 +246,19 @@ void viewCoursesInSemester(Semester* semester, PrintCourse printNumber)
 
 void exportStudentListInCourseToCSV(Course* course, const string& filename){
     if(!course) return;
-    ofstream fout;
-    fout.open(filename);
-    if(!fout.is_open()){
+    ofstream file;
+    file.open(filename);
+    if(!file.is_open()){
         cout << "Failed to open file.\n";
         return;
     }
     Student* tem = course->studentList;
-    fout << "No,StudentID,FirstName,LastName,totalMark,finalMark,midtermMark,otherMark\n";
+    file << "No,StudentID,FirstName,LastName,totalMark,finalMark,midtermMark,otherMark\n";
     while(tem){
         string fullname = tem->LastName + " " + tem->FirstName;
-        fout << tem->No << ",";
-        fout << tem->StudentID << ",";
-        fout << fullname << ",,,," << endl;
+        file << tem->No << ",";
+        file << tem->StudentID << ",";
+        file << fullname << ",,,," << endl;
         tem = tem->next;
     }  
 }
