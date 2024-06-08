@@ -79,7 +79,7 @@ int printStudent01(Student* student) {
     cout << student->dob << string(13 - student->dob.size(), ' ') << "|";
     cout << student->SocialID << string(15 - student->SocialID.size(), ' ') << "|";
     cout << setw(6) << student->credits << " |";
-    cout << setw(4) << student->gpa << "  |\n";
+//    cout << setw(4) << student->gpa << "  |\n";
     return 1;
 }
 void importCourseStudentsFromCSV(Course* course, const string& filePath)
@@ -139,7 +139,7 @@ void calculateStudentGPA (Student *student , Course* courseList)
     }
     if(ToTalCredits >0)
     {
-        student->gpa = TotalMarkInSemester/ToTalCredits;
+    //    student->gpa = TotalMarkInSemester/ToTalCredits;
     }
 }
 
@@ -167,4 +167,14 @@ void viewClassScoreBoard (Semester * semester , const string & className)
         // tiep tuc kiem tra trong cac khoa hoc khac co ten lop can in khong
         courseList = courseList->next;
     }
+}
+Student* findStudentInClass(Class* cls, const string& studentID) {
+    if (!cls->StudentList) return NULL;
+    Student* tem = cls->StudentList;
+    while (tem) {
+        if (tem->StudentID == studentID) {
+            return tem;
+        }
+    }
+    return NULL;
 }

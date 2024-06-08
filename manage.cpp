@@ -362,7 +362,4 @@ void ImportScoreBoard (Course *course , const string & filePath)
      }
      cout << "+-----+----------+------------------------------+------------+------------+------------+------------+\n";
  }
- Student* findStudentInClassFromCourse(Student* studentInCorse, Semester* semester){
-    
-    
-}
+ Student* findStudentInClassFromCourse(Student* studentInCorse, Semester* semester);
