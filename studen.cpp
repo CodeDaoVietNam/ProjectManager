@@ -178,3 +178,13 @@ Student* findStudentInClass(Class* cls, const string& studentID) {
     }
     return NULL;
 }
+Student* findStudentInCourse(Course* course, const string& studentID) {
+    if (!course->studentList) return NULL;
+    Student* tem = course->studentList;
+    while (tem) {
+        if (tem->StudentID == studentID) {
+            return tem;
+        }
+    }
+    return NULL;
+}
