@@ -31,7 +31,8 @@ struct Student
     double finalMark = -1;
     double midtermMark = -1;
     double otherMark = -1;
-    double  gpa = 0;
+    double semesterGPA[3] = {-1, -1, -1};
+    double yearGpa = 0;
     int credits = 0;
     Student* next ;
 };

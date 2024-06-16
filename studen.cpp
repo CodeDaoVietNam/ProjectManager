@@ -79,7 +79,7 @@ int printStudent01(Student* student) {
     cout << student->dob << string(13 - student->dob.size(), ' ') << "|";
     cout << student->SocialID << string(15 - student->SocialID.size(), ' ') << "|";
     cout << setw(6) << student->credits << " |";
-    cout << setw(4) << student->gpa << "  |\n";
+//    cout << setw(4) << student->gpa << "  |\n";
     return 1;
 }
 void importCourseStudentsFromCSV(Course* course, const string& filePath)
@@ -139,36 +139,52 @@ void calculateStudentGPA (Student *student , Course* courseList)
     }
     if(ToTalCredits >0)
     {
-        student->gpa = TotalMarkInSemester/ToTalCredits;
+    //    student->gpa = TotalMarkInSemester/ToTalCredits;
     }
 }
 
 
-//void viewClassScoreBoard (Semester * semester , const string & className)
-//{
-//    // tạo một Danh sách liên kết courseList tạm để lưu danh sách khoa học của học kỳ này 
-//    Course * courseList = semester->courseList;
-//    while(courseList != NULL){
-//        if(courseList->className == className)
-//        {
-//            cout<<"Course : "<<courseList->courseName<<endl;
-//            // trong khóa học đó sẽ có danh sách sinh viên đăng ký khóa học đó 
-//            Student *student = courseList->studentList;
-//            while(student != NULL)
-//            {
-//                calculateStudentGPA(student,courseList);
-//                cout<<"NO : "<<student->No<<endl;
-//                cout<<"StudentID : "<<student->StudentID<<endl;
-//                cout<<"Student ToTalMark : "<<student->totalMark<<endl;
-//                // in ra các kiểu thuôc tính của một học sinh trong lớp (có ham sẵn ) chỉ cần in thêm và tính toán gpa 
-//            }
-//            student =student->next;
-//        }
-//        // tiep tuc kiem tra trong cac khoa hoc khac co ten lop can in khong
-//        courseList = courseList->next;
-//    }
-//}
-void vewClassScoreBoard(SchoolYear* schoolYear, Class * cls)
+void viewClassScoreBoard (Semester * semester , const string & className)
 {
-    SchoolYear 
+    // tạo một Danh sách liên kết courseList tạm để lưu danh sách khoa học của học kỳ này 
+    Course * courseList = semester->courseList;
+    while(courseList != NULL){
+        if(courseList->className == className)
+        {
+            cout<<"Course : "<<courseList->courseName<<endl;
+            // trong khóa học đó sẽ có danh sách sinh viên đăng ký khóa học đó 
+            Student *student = courseList->studentList;
+            while(student != NULL)
+            {
+                calculateStudentGPA(student,courseList);
+                cout<<"NO : "<<student->No<<endl;
+                cout<<"StudentID : "<<student->StudentID<<endl;
+                cout<<"Student ToTalMark : "<<student->totalMark<<endl;
+                // in ra các kiểu thuôc tính của một học sinh trong lớp (có ham sẵn ) chỉ cần in thêm và tính toán gpa 
+            }
+            student =student->next;
+        }
+        // tiep tuc kiem tra trong cac khoa hoc khac co ten lop can in khong
+        courseList = courseList->next;
+    }
+}
+Student* findStudentInClass(Class* cls, const string& studentID) {
+    if (!cls->StudentList) return NULL;
+    Student* tem = cls->StudentList;
+    while (tem) {
+        if (tem->StudentID == studentID) {
+            return tem;
+        }
+    }
+    return NULL;
+}
+Student* findStudentInCourse(Course* course, const string& studentID) {
+    if (!course->studentList) return NULL;
+    Student* tem = course->studentList;
+    while (tem) {
+        if (tem->StudentID == studentID) {
+            return tem;
+        }
+    }
+    return NULL;
 }

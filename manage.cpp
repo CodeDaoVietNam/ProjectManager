@@ -277,6 +277,7 @@ void exportStudentListInCourseToCSV(Course* course, const string& filename){
     cout << "Export Successful.\n";
 }
 
+
 void ImportScoreBoard (Course *course , const string & filePath)
 {
     ifstream file(filePath);
@@ -363,4 +364,5 @@ void ImportScoreBoard (Course *course , const string & filePath)
      }
      cout << "+-----+----------+------------------------------+------------+------------+------------+------------+\n";
  }
+ Student* findStudentInClassFromCourse(Student* studentInCorse, Semester* semester);
  void AnhSeNhoEmLAM();
