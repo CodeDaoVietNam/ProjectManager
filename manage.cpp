@@ -1,4 +1,4 @@
-#include "manage.h"
+﻿#include "manage.h"
 Course* createCourse(string courseID, string courseName, string className, string teacherName, int credits, int maxStudents, string dayOfWeek, string session) {
     Course* course = new Course;
     course->courseID = courseID;
@@ -315,6 +315,8 @@ void ImportScoreBoard (Course *course , const string & filePath)
             student->finalMark = FinalMark;
             student->midtermMark = MidtermMark;
             student->otherMark = OtherMark;
+            // một đống hàm nữa
+            // Tú làm
             }
         student = student->next;
     } 
@@ -361,3 +363,4 @@ void ImportScoreBoard (Course *course , const string & filePath)
      }
      cout << "+-----+----------+------------------------------+------------+------------+------------+------------+\n";
  }
+ void AnhSeNhoEmLAM();

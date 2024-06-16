@@ -144,27 +144,31 @@ void calculateStudentGPA (Student *student , Course* courseList)
 }
 
 
-void viewClassScoreBoard (Semester * semester , const string & className)
+//void viewClassScoreBoard (Semester * semester , const string & className)
+//{
+//    // tạo một Danh sách liên kết courseList tạm để lưu danh sách khoa học của học kỳ này 
+//    Course * courseList = semester->courseList;
+//    while(courseList != NULL){
+//        if(courseList->className == className)
+//        {
+//            cout<<"Course : "<<courseList->courseName<<endl;
+//            // trong khóa học đó sẽ có danh sách sinh viên đăng ký khóa học đó 
+//            Student *student = courseList->studentList;
+//            while(student != NULL)
+//            {
+//                calculateStudentGPA(student,courseList);
+//                cout<<"NO : "<<student->No<<endl;
+//                cout<<"StudentID : "<<student->StudentID<<endl;
+//                cout<<"Student ToTalMark : "<<student->totalMark<<endl;
+//                // in ra các kiểu thuôc tính của một học sinh trong lớp (có ham sẵn ) chỉ cần in thêm và tính toán gpa 
+//            }
+//            student =student->next;
+//        }
+//        // tiep tuc kiem tra trong cac khoa hoc khac co ten lop can in khong
+//        courseList = courseList->next;
+//    }
+//}
+void vewClassScoreBoard(SchoolYear* schoolYear, Class * cls)
 {
-    // tạo một Danh sách liên kết courseList tạm để lưu danh sách khoa học của học kỳ này 
-    Course * courseList = semester->courseList;
-    while(courseList != NULL){
-        if(courseList->className == className)
-        {
-            cout<<"Course : "<<courseList->courseName<<endl;
-            // trong khóa học đó sẽ có danh sách sinh viên đăng ký khóa học đó 
-            Student *student = courseList->studentList;
-            while(student != NULL)
-            {
-                calculateStudentGPA(student,courseList);
-                cout<<"NO : "<<student->No<<endl;
-                cout<<"StudentID : "<<student->StudentID<<endl;
-                cout<<"Student ToTalMark : "<<student->totalMark<<endl;
-                // in ra các kiểu thuôc tính của một học sinh trong lớp (có ham sẵn ) chỉ cần in thêm và tính toán gpa 
-            }
-            student =student->next;
-        }
-        // tiep tuc kiem tra trong cac khoa hoc khac co ten lop can in khong
-        courseList = courseList->next;
-    }
+    SchoolYear 
 }
