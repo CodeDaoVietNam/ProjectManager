@@ -10,7 +10,9 @@ typedef int(*PrintOneStudent)(Student* student);
 int printStudent01(Student* student);
 int printStudent02(Student* student);
 void importCourseStudentsFromCSV(Course* course, const string& filePath);
-void calculateStudentGPA (Student *student , Course* courseList);
 // hàm xem điểm của một lớp bất kỳ có tên lớp
 void viewClassScoreBoard (Semester * semester , const string & className);
+Student* findStudentInCourse(Course* course, const string& studentID);
+void  calculateYearGpa(Student* student);
+void calculateSemesterGPA(Student* student, Course* courseList, int semesterNumber);
 #endif

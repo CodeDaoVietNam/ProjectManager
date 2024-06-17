@@ -4,4 +4,5 @@
 using namespace std;
 void Menu1();
 void Menu2();
+void Menu3();
 #endif
