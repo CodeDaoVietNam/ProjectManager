@@ -33,6 +33,19 @@ SchoolYear* createSchoolYear(string year) {
     schoolYear->next = nullptr;
     return schoolYear;
 }
+bool addSchoolYearToListYear(SchoolYear* newYear, SchoolYear* listYear) {
+    if (!newYear) false;
+    if (!listYear) {
+        listYear = newYear;
+        return true;
+    }
+    SchoolYear* tem = listYear;
+    while (tem->next) {
+        tem = tem->next;
+    }
+    tem->next = newYear;
+    return true;
+}
 
 void addCourseToSemester(Semester* semester, Course* course) {
     if (semester == NULL)
@@ -365,3 +378,21 @@ void ImportScoreBoard (Course *course , const string & filePath)
      cout << "+-----+----------+------------------------------+------------+------------+------------+------------+\n";
  }
  Student* findStudentInClassFromCourse(Student* studentInCorse, Semester* semester);
+ SchoolYear* findSchoolYearInList(SchoolYear* list,const string& year) {
+     if (!list) return NULL;
+     SchoolYear* tem = list;
+     while (tem) {
+         if (tem->year == year) return tem;
+         tem = tem->next;
+     }
+     return NULL;
+ }
+ Semester* findSemester(SchoolYear* year, int numSemester) {
+     if (!year->semesterList) return;
+     Semester* tem = year->semesterList;
+     while (tem) {
+         if (tem->semesterNumber == numSemester) return tem;
+         tem = tem->next;
+     }
+     return NULL;
+ }

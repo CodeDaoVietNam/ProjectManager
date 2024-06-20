@@ -15,6 +15,9 @@ void addStudentToCourse(Course* course, Student* student);
 // hàm thêm khoa học vào học kỳ 
 void addCourseToSemester(Semester* semester, Course* course) ;
 
+// hàm thêm year vào listschoolyear
+bool addSchoolYearToListYear(SchoolYear* newYear, SchoolYear* listYear);
+
 // hàm thêm học kỳ vào năm học 
 void addSemesterToSchoolYear(SchoolYear* schoolYear, Semester* semester) ;
 
@@ -71,5 +74,11 @@ void printStudentScore(Student* student);
 
 // hàm in bảng điểm của tất cả học sinh trong lớp học
 void viewScoreBoard(Course* course);
+
+// hàm tìm năm học
+SchoolYear* findSchoolYearInList(SchoolYear* list, const string& year);
+
+// hàm tìm học kỳ trong năm học
+Semester* findSemester(SchoolYear* year, int numSemester);
 
 #endif
