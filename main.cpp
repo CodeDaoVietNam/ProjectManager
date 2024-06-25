@@ -113,13 +113,15 @@ int main()
                         cin >> credits;
                         cout << "Press school day of week: ";
                         cin >> dayofweek;
+                        cout << "Press max students in course: ";
+                        cin >> maxstudent;
                         //Kiem tra nhap dayofweek
                         cout << "Press session: ";
                         cin >> session;
                         Course* newCourse = createCourse(courseid, coursename, classname, teachername, credits, maxstudent, dayofweek, session);
                         addCourseToSemester(curSemester, newCourse);
                     }
-                    char check3;
+                    char check3 = 'a';
                     while (check3 != ' ') {
                         cout << "Press Space to go back!";
                         cin >> check3;
@@ -143,12 +145,12 @@ int main()
             if (chose == 7) {
 
             }
-            char check;
+            char check = 'a';
             while (check != ' ') {
                 cout << "Press Space to go back!";
                 cin >> check;
             }
-            //Menu3();
+            Menu3();
             int chose;
             cout << "Enter your selection: ";
             cin >> chose;

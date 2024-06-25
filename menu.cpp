@@ -40,3 +40,13 @@ void Menu3p3() {
 	cout << "2. Create new course.\n";
 	cout << "3. Go back.\n";
 }
+void Menu3p4() {
+	system("cls");
+	cout << "STAFF VIEW\n";
+	cout << "1. View class list.\n";
+	cout << "1. View class information.\n";
+	cout << "3. View course List.\n";
+	cout << "2. View course information.\n";
+	cout << "5. View course result.\n";
+	cout << "6. View student GPA.\n";
+}
