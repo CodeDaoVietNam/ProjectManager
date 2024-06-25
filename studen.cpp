@@ -163,3 +163,4 @@ Student* findStudentInCourse(Course* course, const string& studentID) {
     }
     return NULL;
 }
+void ViewClassScoreBoard(Class* cls);

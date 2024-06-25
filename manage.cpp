@@ -388,7 +388,7 @@ void ImportScoreBoard (Course *course , const string & filePath)
      return NULL;
  }
  Semester* findSemester(SchoolYear* year, int numSemester) {
-     if (!year->semesterList) return;
+     if (!year->semesterList) return NULL;
      Semester* tem = year->semesterList;
      while (tem) {
          if (tem->semesterNumber == numSemester) return tem;

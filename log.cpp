@@ -14,6 +14,12 @@ void Input_Username_Password (string &username ,string &password)
     cout<<"You entered wrong password or username.\n";
     Input_Username_Password(username,password);
 }
+void addUser(User* &head, string userID, string password, string firstName, string lastName, int userType)
+{
+    User* newUser = createUser(userID, password, firstName, lastName, userType);
+    newUser->next = head;
+    head = newUser;
+}
 // hàm tìm user có trong danh sách liên kết hay không
 User *findUser (User*head ,const string &username)
 {
