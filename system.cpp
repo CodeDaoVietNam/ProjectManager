@@ -1,8 +1,4 @@
 #include "system.h"
-#include"lib.h"
-#include"class.h"
-#include"manage.h"
-#include"student.h"
 
 void saveStudent(std::ofstream& ofs, Student* student) {
     while (student) {
