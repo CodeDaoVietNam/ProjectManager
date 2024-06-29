@@ -198,14 +198,17 @@ void loadClass(std::ifstream& ifs, Class*& classList) {
 
 void loadSchoolYear(std::ifstream& ifs, SchoolYear*& schoolYearList) {
     SchoolYear* tail = nullptr;
-    while (ifs) {
+    while (ifs.peek() != EOF) { // Check if not end of file
         SchoolYear* schoolYear = new SchoolYear;
         size_t length;
-        ifs.read((char*)&length, sizeof(length));
+        ifs.read(reinterpret_cast<char*>(&length), sizeof(length));
+
         schoolYear->year.resize(length);
         ifs.read(&schoolYear->year[0], length);
+
         loadClass(ifs, schoolYear->classList);
         loadSemester(ifs, schoolYear->semesterList);
+
         schoolYear->next = nullptr;
         if (!tail) {
             schoolYearList = tail = schoolYear;
@@ -216,6 +219,7 @@ void loadSchoolYear(std::ifstream& ifs, SchoolYear*& schoolYearList) {
         }
     }
 }
+
 
 void loadData(const std::string& filename, SchoolYear*& schoolYearList) {
     std::ifstream ifs(filename, std::ios::binary);

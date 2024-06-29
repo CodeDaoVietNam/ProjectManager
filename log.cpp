@@ -1,5 +1,5 @@
 #include "log.h"
-void Input_Username_Password (string &username ,string &password)
+void Input_Username_Password (User* userHead,string &username ,string &password)
 {
     cout<<"Please enter your username : ";
     cin>>username;
@@ -12,11 +12,11 @@ void Input_Username_Password (string &username ,string &password)
         return ;
     }
     cout<<"You entered wrong password or username.\n";
-    Input_Username_Password(username,password);
+    Input_Username_Password(userHead,username,password);
 }
-void addUser(User* &head, string userID, string password, string firstName, string lastName, int userType)
+void addUser(User* &head, string userID, string password, string firstName, string lastName, string studentID,int userType)
 {
-    User* newUser = createUser(userID, password, firstName, lastName, userType);
+    User* newUser = createUser(userID, password, firstName, lastName, studentID,userType);
     newUser->next = head;
     head = newUser;
 }
@@ -54,6 +54,7 @@ void viewProfile(User*& user)
     cout<<"UserName : "<<user->userName<<"\n";
     cout<<"First Name : "<<user->firstName<<"\n";
     cout<<"Last Name : "<<user->lastName<<"\n";
+    cout << "StudetnID : " << user->studentID << "\n";
 }
 // hàm thay đổi Password của user
 bool checkStrongPassword (const string &password)
@@ -110,17 +111,44 @@ void changePassword(User*& user)
     }
 }
 // hàm tạo user
-User* createUser(string userID, string password, string firstName, string lastName, int userType)
+User* createUser(string userID, string password, string firstName, string lastName,string StudentID, int userType)
 {
     User* user = new User;
     user->userName = userID;
     user->firstName = firstName;
     user->lastName = lastName;
     user->userType = userType;
+    user->studentID = StudentID;
     user->next = NULL;
     return user;
 }
+void importUsersFromCSV(User*& userList, const std::string& filePath) {
+    std::ifstream file(filePath);
+    if (!file.is_open()) {
+        std::cerr << "Unable to open file: " << filePath << std::endl;
+        return;
+    }
 
+    std::string line;
+    // Assuming the first line is the header, we can skip it
+    std::getline(file, line);
+    while (std::getline(file, line)) {
+        std::stringstream ss(line);
+        std::string userName, password, studentID, firstName, lastName, userType;
+
+        std::getline(ss, userName, ',');
+        std::getline(ss, password, ',');
+        std::getline(ss, studentID, ',');
+        std::getline(ss, firstName, ',');
+        std::getline(ss, lastName, ',');
+        std::getline(ss, userType, ',');
+        int UserType = stoi(userType);
+        addUser(userList, userName, password, firstName, lastName, studentID, UserType);
+    }
+
+    file.close();
+    std::cout << "Users imported successfully from " << filePath << std::endl;
+}
 // ham đăng xuất 
 void logout()
 {

@@ -6,6 +6,7 @@ struct User{
     string password;
     string firstName;
     string lastName;
+    string studentID;
     int userType;
     User *next;
 };

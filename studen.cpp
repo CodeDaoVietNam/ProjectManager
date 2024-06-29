@@ -163,4 +163,29 @@ Student* findStudentInCourse(Course* course, const string& studentID) {
     }
     return NULL;
 }
-void ViewClassScoreBoard(Class* cls);
+
+void viewClassScoreBoard(Class* classList, Course* courseList, const string& className) {
+    Class* currentClass = classList;
+    while (currentClass != nullptr) {
+        if (currentClass->className == className) {
+            Student* student = currentClass->StudentList;
+            cout << "Class: " << currentClass->className << endl;
+            cout << "------------------------------------------------------------" << endl;
+            cout << "No\tStudent ID\tFull Name\tSemester 1 GPA\tSemester 2 GPA\tSemester 3 GPA\tYear GPA" << endl;
+            cout << "------------------------------------------------------------" << endl;
+            while (student != nullptr) {
+                for (int i = 1; i <= 3; ++i) {
+                    calculateSemesterGPA(student, courseList, i);
+                }
+                calculateYearGpa(student);
+                cout << student->No << "\t" << student->StudentID << "\t" << student->FirstName << " " << student->LastName
+                    << "\t" << student->semesterGPA[0] << "\t\t" << student->semesterGPA[1] << "\t\t"
+                    << student->semesterGPA[2] << "\t\t" << student->yearGpa << endl;
+                student = student->next;
+            }
+            return;  // Class found and processed, exit the function
+        }
+        currentClass = currentClass->next;
+    }
+    cout << "Class " << className << " not found." << endl;
+}
